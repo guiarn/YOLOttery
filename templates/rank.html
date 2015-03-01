@@ -3,10 +3,11 @@
 
   <head>
     <meta charset="utf-8">
-    <title>{{ username }} ranking</title>
+    <title>{{ name }} ranking</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="stylesheet" href= {{ s }} >
+   	<link rel="stylesheet" href= {{ s }} >
+<!--	<link rel="stylesheet" href="./css/bootstrap.css" > -->
   </head>
 
 <body background-color:"#9B59B6">
@@ -24,18 +25,14 @@
 		<div class="panel panel-default">
 			<div align="center" class="panel-body">
 				<div id="getyolos">
-					<h4>Get 10 more YOLOs! - 1$</h4>
+					<h4>Get more YOLOs!</h4>
 				</div>
-				<form action="" method="POST">
-				  	<script
-					    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-					    data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
-					    data-amount="2000"
-					    data-name="Demo Site"
-					    data-description="2 widgets ($20.00)"
-					    data-image="/128x128.png">
-				  	</script>
-				</form>
+				<div class="form-group">
+					<form action="https://17cff94d.ngrok.com/payment" method="POST">				  	
+				  		<input class="form-control" id="focusedInput" name="yolos" type="text">
+				  		<input name="username" value= {{ username }} >
+				  	</form>
+				</div>
 			</div>
 		</div>
   		{% else %}

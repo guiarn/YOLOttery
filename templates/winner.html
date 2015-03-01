@@ -3,7 +3,7 @@
 
   <head>
     <meta charset="utf-8">
-    <title>{{ winner }} won this week!</title>
+    <title>Winners of this week!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href= {{ s }} >
@@ -11,7 +11,10 @@
 
 <body background-color:"#9B59B6">
 	<div align="center" class="jumbotron">
-  		<h2>This week's prize was won by {{ winner }}</h2>
+  		<h2>This week's prize was won by</h2>
+  		{% for i in winners %}
+  		<h1> {{ i }} </h1>
+  		{% endfor %}
   		<h1>He won {{ prize }} $!s</h1>
 	</div>
 </body>
