@@ -1,13 +1,62 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html lang="en">
-<head>
-    <title>Your ranking</title>
-</head>
-<body>
-	{% if name %}
-	  <h1>Hello {{ name }}!</h1>
-	{% else %}
-	  <h1>Hello World!</h1>
-	{% endif %}
+
+  <head>
+    <meta charset="utf-8">
+    <title>{{ username }} ranking</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="./css/bootstrap.css">
+  </head>
+
+<body background-color:"#9B59B6">
+	<div align="center" class="jumbotron">
+  		<h2>Prize Pool of {{ zone }}:</h2>
+  		<h1>{{ prize }} $</h1>
+	</div>
+	<div>
+		<div class="panel panel-default">
+  			<div align="center" class="panel-body">
+  				<h4>You are rank {{ rank }} of your zone</h4>
+  			</div>
+  		</div>
+  		{% if yoleft == "0" %}
+		<div class="panel panel-default">
+			<div align="center" class="panel-body">
+				<div id="getyolos">
+					<h4>Get 10 more YOLOs! - 1$</h4>
+				</div>
+				<form action="" method="POST">
+				  	<script
+					    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+					    data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+					    data-amount="2000"
+					    data-name="Demo Site"
+					    data-description="2 widgets ($20.00)"
+					    data-image="/128x128.png">
+				  	</script>
+				</form>
+			</div>
+		</div>
+  		{% else %}
+	  		<div class="panel panel-default">
+	  			<div align="center" class="panel-body">
+	  				<h4>{{ yoleft }} YOLOs left</h4>
+	  			</div>
+			</div>
+		{% endif %}
+		<div class="panel panel-default">
+  			<div align="center" class="panel-body">
+  				<h3>Ranking</h3>
+  				<ul class="list-group">
+	  				{% for t in top %}
+	  				<li class="list-group-item">
+	  					<h4>{{ t }}</h4>
+					</li>
+					{% endfor %}
+				</ul>
+  			</div>
+		</div>
+	</div>
 </body>
 </html>
