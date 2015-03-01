@@ -1,7 +1,8 @@
 import sqlite3
+import os
 from flask import g, Flask
 
-DATABASE = '/database.db'
+DATABASE = os.path.dirname(os.path.realpath(__file__)) + "/database/database.db"
 app = Flask(__name__)
 
 def get_db():
@@ -23,9 +24,11 @@ def close_connection(exception):
 def query_db(query, args=(), one=False):
 	cur = get_db().execute(query, args)
 	rv = cur.fetchall()
+	g._database.commit()
 	cur.close()
 	return (rv[0] if rv else None) if one else rv
 
-with app.app_context():
-	for user in query_db('select * from prova'):
-		print (user[0], 'has the id', user[1])
+if __name__ == "__main__":
+	with app.app_context():
+		for user in query_db('select * from prova'):
+			print (user[0], 'has the id', user[1])
